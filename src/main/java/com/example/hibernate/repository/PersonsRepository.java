@@ -1,22 +1,18 @@
 package com.example.hibernate.repository;
 
+import com.example.hibernate.entity.PersonId;
 import com.example.hibernate.entity.Persons;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class PersonsRepository {
+public interface PersonsRepository extends JpaRepository<Persons, PersonId> {
+    List<Persons> findByCityOfLiving(String city);
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    List<Persons> findByAgeLessThanOrderByAge(int age);
 
-    public List<Persons> getPersonsByCity(String city) {
-        String query = "SELECT p FROM Persons p WHERE p.city_of_living = :city";
-        return entityManager.createQuery(query, Persons.class)
-                .setParameter("city", city)
-                .getResultList();
-    }
+    Optional<Persons> findByNameAndSurname(String name, String surname);
 }

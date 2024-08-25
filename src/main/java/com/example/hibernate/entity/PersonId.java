@@ -1,12 +1,24 @@
 package com.example.hibernate.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Embeddable
+import java.io.Serializable;
+
 @Data
-public class PersonID {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Embeddable
+public class PersonId implements Serializable {
+    @Column(name="name")
     private String name;
+    @Column(name="surname")
     private String surname;
+    @Column(name="age")
     private int age;
 }
