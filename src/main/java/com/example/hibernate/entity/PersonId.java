@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Embeddable
 @Data
-public class Person_ID {
+public class PersonID {
     private String name;
     private String surname;
     private int age;
