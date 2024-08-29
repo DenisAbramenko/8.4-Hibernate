@@ -2,7 +2,6 @@ package com.example.hibernate.service;
 
 import com.example.hibernate.entity.Persons;
 import com.example.hibernate.repository.PersonsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
